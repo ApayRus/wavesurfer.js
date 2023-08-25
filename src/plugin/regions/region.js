@@ -850,6 +850,8 @@ export class Region {
         const data = {...this.data, text };
         const eventParams = {action: 'contentEdited', oldText, text};
         this.update({data}, eventParams);
+        this.fireEvent('update-end', eventParams);
+        this.wavesurfer.fireEvent('region-update-end', this, eventParams);
     }
 
     onContentClick(event){
